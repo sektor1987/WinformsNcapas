@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://wsLocal/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="VHWService" targetNamespace="http://wsLocal/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/WSVH/VHWService?xsd=1" namespace="http://wsLocal/" />
+    </xsd:schema>
+  </types>
+  <message name="getSituacionEmpleado">
+    <part name="parameters" element="tns:getSituacionEmpleado" />
+  </message>
+  <message name="getSituacionEmpleadoResponse">
+    <part name="parameters" element="tns:getSituacionEmpleadoResponse" />
+  </message>
+  <message name="getResolucionAllMesAnterior">
+    <part name="parameters" element="tns:getResolucionAllMesAnterior" />
+  </message>
+  <message name="getResolucionAllMesAnteriorResponse">
+    <part name="parameters" element="tns:getResolucionAllMesAnteriorResponse" />
+  </message>
+  <message name="Autenticate">
+    <part name="parameters" element="tns:Autenticate" />
+  </message>
+  <message name="AutenticateResponse">
+    <part name="parameters" element="tns:AutenticateResponse" />
+  </message>
+  <message name="validateDoc">
+    <part name="parameters" element="tns:validateDoc" />
+  </message>
+  <message name="validateDocResponse">
+    <part name="parameters" element="tns:validateDocResponse" />
+  </message>
+  <message name="getResolucionAll">
+    <part name="parameters" element="tns:getResolucionAll" />
+  </message>
+  <message name="getResolucionAllResponse">
+    <part name="parameters" element="tns:getResolucionAllResponse" />
+  </message>
+  <message name="getAntiguedadFun">
+    <part name="parameters" element="tns:getAntiguedadFun" />
+  </message>
+  <message name="getAntiguedadFunResponse">
+    <part name="parameters" element="tns:getAntiguedadFunResponse" />
+  </message>
+  <message name="getAllByRut">
+    <part name="parameters" element="tns:getAllByRut" />
+  </message>
+  <message name="getAllByRutResponse">
+    <part name="parameters" element="tns:getAllByRutResponse" />
+  </message>
+  <message name="lstCantidadPermisoEstado">
+    <part name="parameters" element="tns:lstCantidadPermisoEstado" />
+  </message>
+  <message name="lstCantidadPermisoEstadoResponse">
+    <part name="parameters" element="tns:lstCantidadPermisoEstadoResponse" />
+  </message>
+  <message name="lstCantidadPermisoEstadoUnidad">
+    <part name="parameters" element="tns:lstCantidadPermisoEstadoUnidad" />
+  </message>
+  <message name="lstCantidadPermisoEstadoUnidadResponse">
+    <part name="parameters" element="tns:lstCantidadPermisoEstadoUnidadResponse" />
+  </message>
+  <portType name="VHWService">
+    <operation name="getSituacionEmpleado">
+      <input wsam:Action="http://wsLocal/VHWService/getSituacionEmpleadoRequest" message="tns:getSituacionEmpleado" />
+      <output wsam:Action="http://wsLocal/VHWService/getSituacionEmpleadoResponse" message="tns:getSituacionEmpleadoResponse" />
+    </operation>
+    <operation name="getResolucionAllMesAnterior">
+      <input wsam:Action="http://wsLocal/VHWService/getResolucionAllMesAnteriorRequest" message="tns:getResolucionAllMesAnterior" />
+      <output wsam:Action="http://wsLocal/VHWService/getResolucionAllMesAnteriorResponse" message="tns:getResolucionAllMesAnteriorResponse" />
+    </operation>
+    <operation name="Autenticate">
+      <input wsam:Action="http://wsLocal/VHWService/AutenticateRequest" message="tns:Autenticate" />
+      <output wsam:Action="http://wsLocal/VHWService/AutenticateResponse" message="tns:AutenticateResponse" />
+    </operation>
+    <operation name="validateDoc">
+      <input wsam:Action="http://wsLocal/VHWService/validateDocRequest" message="tns:validateDoc" />
+      <output wsam:Action="http://wsLocal/VHWService/validateDocResponse" message="tns:validateDocResponse" />
+    </operation>
+    <operation name="getResolucionAll">
+      <input wsam:Action="http://wsLocal/VHWService/getResolucionAllRequest" message="tns:getResolucionAll" />
+      <output wsam:Action="http://wsLocal/VHWService/getResolucionAllResponse" message="tns:getResolucionAllResponse" />
+    </operation>
+    <operation name="getAntiguedadFun">
+      <input wsam:Action="http://wsLocal/VHWService/getAntiguedadFunRequest" message="tns:getAntiguedadFun" />
+      <output wsam:Action="http://wsLocal/VHWService/getAntiguedadFunResponse" message="tns:getAntiguedadFunResponse" />
+    </operation>
+    <operation name="getAllByRut">
+      <input wsam:Action="http://wsLocal/VHWService/getAllByRutRequest" message="tns:getAllByRut" />
+      <output wsam:Action="http://wsLocal/VHWService/getAllByRutResponse" message="tns:getAllByRutResponse" />
+    </operation>
+    <operation name="lstCantidadPermisoEstado">
+      <input wsam:Action="http://wsLocal/VHWService/lstCantidadPermisoEstadoRequest" message="tns:lstCantidadPermisoEstado" />
+      <output wsam:Action="http://wsLocal/VHWService/lstCantidadPermisoEstadoResponse" message="tns:lstCantidadPermisoEstadoResponse" />
+    </operation>
+    <operation name="lstCantidadPermisoEstadoUnidad">
+      <input wsam:Action="http://wsLocal/VHWService/lstCantidadPermisoEstadoUnidadRequest" message="tns:lstCantidadPermisoEstadoUnidad" />
+      <output wsam:Action="http://wsLocal/VHWService/lstCantidadPermisoEstadoUnidadResponse" message="tns:lstCantidadPermisoEstadoUnidadResponse" />
+    </operation>
+  </portType>
+  <binding name="VHWServicePortBinding" type="tns:VHWService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="getSituacionEmpleado">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getResolucionAllMesAnterior">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Autenticate">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="validateDoc">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getResolucionAll">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getAntiguedadFun">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getAllByRut">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="lstCantidadPermisoEstado">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="lstCantidadPermisoEstadoUnidad">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="VHWService">
+    <port name="VHWServicePort" binding="tns:VHWServicePortBinding">
+      <soap:address location="http://localhost:8080/WSVH/VHWService" />
+    </port>
+  </service>
+</definitions>

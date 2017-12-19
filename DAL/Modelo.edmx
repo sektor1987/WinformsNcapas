@@ -1,0 +1,965 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Modelo.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBL_AUTENTIFICACION">
+          <Key>
+            <PropertyRef Name="ID_AUTENTIFICACION" />
+          </Key>
+          <Property Name="ID_AUTENTIFICACION" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FH_AUTENTIFICACION" Type="timestamp" Precision="6" Nullable="false" />
+          <Property Name="RUT_USUARIO" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TBL_DIAFESTIVO">
+          <Key>
+            <PropertyRef Name="ID_DIAFEST" />
+          </Key>
+          <Property Name="ID_DIAFEST" Type="date" Nullable="false" />
+          <Property Name="DESC_DIAFEST" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_ESTADO">
+          <Key>
+            <PropertyRef Name="ID_ESTADO_SOL" />
+          </Key>
+          <Property Name="ID_ESTADO_SOL" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESC_ESTADO" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_ESTADOSOLICITUDPERMISO">
+          <Key>
+            <PropertyRef Name="ID_ESTADO" />
+            <PropertyRef Name="ID_SOLICITUDPERMISO" />
+            <PropertyRef Name="FH_ESTADO" />
+          </Key>
+          <Property Name="ID_ESTADO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_SOLICITUDPERMISO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FH_ESTADO" Type="timestamp" Precision="6" Nullable="false" />
+          <Property Name="RESPONSABLE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_MODULO">
+          <Key>
+            <PropertyRef Name="ID_MODULO" />
+          </Key>
+          <Property Name="ID_MODULO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESC_MODULO" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_PERMISO">
+          <Key>
+            <PropertyRef Name="ID_PERMISO" />
+          </Key>
+          <Property Name="ID_PERMISO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RECURSO_LEGAL" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_PERMISOUSUARIO">
+          <Key>
+            <PropertyRef Name="RUT_USUARIO" />
+            <PropertyRef Name="ID_PERMISO" />
+          </Key>
+          <Property Name="RUT_USUARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_PERMISO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DIAS_AUTORIZADOS" Type="number" Precision="38" Scale="0" />
+          <Property Name="COMENTARIOS" Type="varchar2" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TBL_REG_ERRORES">
+          <Key>
+            <PropertyRef Name="NUMERO_ERROR" />
+          </Key>
+          <Property Name="NUMERO_ERROR" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="NOMBRESUBPROGRAMA" Type="varchar2" MaxLength="200" />
+          <Property Name="NUMEROYMENSAJEDEERROR" Type="varchar2" MaxLength="200" />
+          <Property Name="FECHAHORAERROR" Type="timestamp" Precision="6" />
+        </EntityType>
+        <EntityType Name="TBL_REGISTROASISTENCIA">
+          <Key>
+            <PropertyRef Name="ID_REGISTRO" />
+          </Key>
+          <Property Name="ID_REGISTRO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FH_INGRESO" Type="timestamp" Precision="6" Nullable="false" />
+          <Property Name="FH_SALIDA" Type="timestamp" Precision="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_REGISTROFUNCIONARIO">
+          <Key>
+            <PropertyRef Name="RUT_FUNCIONARIO" />
+            <PropertyRef Name="ID_REGISTRO" />
+          </Key>
+          <Property Name="RUT_FUNCIONARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_REGISTRO" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_ROL">
+          <Key>
+            <PropertyRef Name="ID_ROL" />
+          </Key>
+          <Property Name="ID_ROL" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_ROL" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="DESC_ROL" Type="varchar2" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_ROLUSUARIO">
+          <Key>
+            <PropertyRef Name="RUT_USUARIO" />
+            <PropertyRef Name="ID_ROL" />
+          </Key>
+          <Property Name="RUT_USUARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_ROL" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_SITUACION">
+          <Key>
+            <PropertyRef Name="ID_SITUACION" />
+          </Key>
+          <Property Name="ID_SITUACION" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESC_SITUACION" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBL_SOLICITUDPERMISO">
+          <Key>
+            <PropertyRef Name="ID_SOLICITUD" />
+          </Key>
+          <Property Name="ID_SOLICITUD" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_INICIO" Type="date" Nullable="false" />
+          <Property Name="FECHA_FIN_SOL" Type="date" Nullable="false" />
+          <Property Name="RUT_USUARIO" Type="number" Precision="38" Scale="0" />
+          <Property Name="MOTIVO" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_UNIDADINTERNA">
+          <Key>
+            <PropertyRef Name="ID_UNIDAD_INTERNA" />
+          </Key>
+          <Property Name="ID_UNIDAD_INTERNA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESC_UNIDAD_INTERNA" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_USUARIO">
+          <Key>
+            <PropertyRef Name="RUT_USUARIO" />
+          </Key>
+          <Property Name="RUT_USUARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="AP_PATERNO" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="AP_MATERNO" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="TEL_PARTICULAR" Type="varchar2" MaxLength="12" />
+          <Property Name="DIR_PARTICULAR" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="TEL_INSTITUCIONAL" Type="varchar2" MaxLength="12" />
+          <Property Name="PASSWORD" Type="varchar2" MaxLength="1000" Nullable="false" />
+          <Property Name="ID_UNIDAD_INTERNA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="100" />
+          <Property Name="CARGO" Type="varchar2" MaxLength="20" />
+          <Property Name="ID_ROL" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TBL_USUARIOMODULO">
+          <Key>
+            <PropertyRef Name="RUT_USUARIO" />
+            <PropertyRef Name="ID_MODULO" />
+          </Key>
+          <Property Name="RUT_USUARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_MODULO" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <Association Name="CALIFICA">
+          <End Role="TBL_PERMISO" Type="Self.TBL_PERMISO" Multiplicity="1" />
+          <End Role="TBL_SOLICITUDPERMISO" Type="Self.TBL_SOLICITUDPERMISO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PERMISO">
+              <PropertyRef Name="ID_PERMISO" />
+            </Principal>
+            <Dependent Role="TBL_SOLICITUDPERMISO">
+              <PropertyRef Name="MOTIVO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASS_1">
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TBL_USUARIOMODULO" Type="Self.TBL_USUARIOMODULO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_USUARIO">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Principal>
+            <Dependent Role="TBL_USUARIOMODULO">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASS_11">
+          <End Role="TBL_REGISTROASISTENCIA" Type="Self.TBL_REGISTROASISTENCIA" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TBL_REGISTROFUNCIONARIO" Type="Self.TBL_REGISTROFUNCIONARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_REGISTROASISTENCIA">
+              <PropertyRef Name="ID_REGISTRO" />
+            </Principal>
+            <Dependent Role="TBL_REGISTROFUNCIONARIO">
+              <PropertyRef Name="ID_REGISTRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASS_2">
+          <End Role="TBL_MODULO" Type="Self.TBL_MODULO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TBL_USUARIOMODULO" Type="Self.TBL_USUARIOMODULO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_MODULO">
+              <PropertyRef Name="ID_MODULO" />
+            </Principal>
+            <Dependent Role="TBL_USUARIOMODULO">
+              <PropertyRef Name="ID_MODULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASS_3">
+          <End Role="TBL_ESTADO" Type="Self.TBL_ESTADO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TBL_ESTADOSOLICITUDPERMISO" Type="Self.TBL_ESTADOSOLICITUDPERMISO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ESTADO">
+              <PropertyRef Name="ID_ESTADO_SOL" />
+            </Principal>
+            <Dependent Role="TBL_ESTADOSOLICITUDPERMISO">
+              <PropertyRef Name="ID_ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASS_4">
+          <End Role="TBL_SOLICITUDPERMISO" Type="Self.TBL_SOLICITUDPERMISO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TBL_ESTADOSOLICITUDPERMISO" Type="Self.TBL_ESTADOSOLICITUDPERMISO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_SOLICITUDPERMISO">
+              <PropertyRef Name="ID_SOLICITUD" />
+            </Principal>
+            <Dependent Role="TBL_ESTADOSOLICITUDPERMISO">
+              <PropertyRef Name="ID_ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASS_5">
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TBL_PERMISOUSUARIO" Type="Self.TBL_PERMISOUSUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_USUARIO">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Principal>
+            <Dependent Role="TBL_PERMISOUSUARIO">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASS_6">
+          <End Role="TBL_PERMISO" Type="Self.TBL_PERMISO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TBL_PERMISOUSUARIO" Type="Self.TBL_PERMISOUSUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PERMISO">
+              <PropertyRef Name="ID_PERMISO" />
+            </Principal>
+            <Dependent Role="TBL_PERMISOUSUARIO">
+              <PropertyRef Name="ID_PERMISO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASS_7">
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TBL_ROLUSUARIO" Type="Self.TBL_ROLUSUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_USUARIO">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Principal>
+            <Dependent Role="TBL_ROLUSUARIO">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASS_8">
+          <End Role="TBL_ROL" Type="Self.TBL_ROL" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TBL_ROLUSUARIO" Type="Self.TBL_ROLUSUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ROL">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="TBL_ROLUSUARIO">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GENERA">
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="0..1" />
+          <End Role="TBL_SOLICITUDPERMISO" Type="Self.TBL_SOLICITUDPERMISO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_USUARIO">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Principal>
+            <Dependent Role="TBL_SOLICITUDPERMISO">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PERTENECE">
+          <End Role="TBL_UNIDADINTERNA" Type="Self.TBL_UNIDADINTERNA" Multiplicity="1" />
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_UNIDADINTERNA">
+              <PropertyRef Name="ID_UNIDAD_INTERNA" />
+            </Principal>
+            <Dependent Role="TBL_USUARIO">
+              <PropertyRef Name="ID_UNIDAD_INTERNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REGISTRA">
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="0..1" />
+          <End Role="TBL_AUTENTIFICACION" Type="Self.TBL_AUTENTIFICACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_USUARIO">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Principal>
+            <Dependent Role="TBL_AUTENTIFICACION">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TBL_USUARIO_ROL">
+          <End Role="TBL_ROL" Type="Self.TBL_ROL" Multiplicity="0..1" />
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ROL">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="TBL_USUARIO">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModeloStoreContainer">
+          <EntitySet Name="TBL_AUTENTIFICACION" EntityType="Self.TBL_AUTENTIFICACION" Schema="VSSTUDIOUSER" store:Type="Tables" />
+          <EntitySet Name="TBL_DIAFESTIVO" EntityType="Self.TBL_DIAFESTIVO" Schema="VSSTUDIOUSER" store:Type="Tables" />
+          <EntitySet Name="TBL_ESTADO" EntityType="Self.TBL_ESTADO" Schema="VSSTUDIOUSER" store:Type="Tables" />
+          <EntitySet Name="TBL_ESTADOSOLICITUDPERMISO" EntityType="Self.TBL_ESTADOSOLICITUDPERMISO" Schema="VSSTUDIOUSER" store:Type="Tables" />
+          <EntitySet Name="TBL_MODULO" EntityType="Self.TBL_MODULO" Schema="VSSTUDIOUSER" store:Type="Tables" />
+          <EntitySet Name="TBL_PERMISO" EntityType="Self.TBL_PERMISO" Schema="VSSTUDIOUSER" store:Type="Tables" />
+          <EntitySet Name="TBL_PERMISOUSUARIO" EntityType="Self.TBL_PERMISOUSUARIO" Schema="VSSTUDIOUSER" store:Type="Tables" />
+          <EntitySet Name="TBL_REG_ERRORES" EntityType="Self.TBL_REG_ERRORES" Schema="VSSTUDIOUSER" store:Type="Tables" />
+          <EntitySet Name="TBL_REGISTROASISTENCIA" EntityType="Self.TBL_REGISTROASISTENCIA" Schema="VSSTUDIOUSER" store:Type="Tables" />
+          <EntitySet Name="TBL_REGISTROFUNCIONARIO" EntityType="Self.TBL_REGISTROFUNCIONARIO" Schema="VSSTUDIOUSER" store:Type="Tables" />
+          <EntitySet Name="TBL_ROL" EntityType="Self.TBL_ROL" Schema="VSSTUDIOUSER" store:Type="Tables" />
+          <EntitySet Name="TBL_ROLUSUARIO" EntityType="Self.TBL_ROLUSUARIO" Schema="VSSTUDIOUSER" store:Type="Tables" />
+          <EntitySet Name="TBL_SITUACION" EntityType="Self.TBL_SITUACION" Schema="VSSTUDIOUSER" store:Type="Tables" />
+          <EntitySet Name="TBL_SOLICITUDPERMISO" EntityType="Self.TBL_SOLICITUDPERMISO" Schema="VSSTUDIOUSER" store:Type="Tables" />
+          <EntitySet Name="TBL_UNIDADINTERNA" EntityType="Self.TBL_UNIDADINTERNA" Schema="VSSTUDIOUSER" store:Type="Tables" />
+          <EntitySet Name="TBL_USUARIO" EntityType="Self.TBL_USUARIO" Schema="VSSTUDIOUSER" store:Type="Tables" />
+          <EntitySet Name="TBL_USUARIOMODULO" EntityType="Self.TBL_USUARIOMODULO" Schema="VSSTUDIOUSER" store:Type="Tables" />
+          <AssociationSet Name="CALIFICA" Association="Self.CALIFICA">
+            <End Role="TBL_PERMISO" EntitySet="TBL_PERMISO" />
+            <End Role="TBL_SOLICITUDPERMISO" EntitySet="TBL_SOLICITUDPERMISO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASS_1" Association="Self.FK_ASS_1">
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+            <End Role="TBL_USUARIOMODULO" EntitySet="TBL_USUARIOMODULO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASS_11" Association="Self.FK_ASS_11">
+            <End Role="TBL_REGISTROASISTENCIA" EntitySet="TBL_REGISTROASISTENCIA" />
+            <End Role="TBL_REGISTROFUNCIONARIO" EntitySet="TBL_REGISTROFUNCIONARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASS_2" Association="Self.FK_ASS_2">
+            <End Role="TBL_MODULO" EntitySet="TBL_MODULO" />
+            <End Role="TBL_USUARIOMODULO" EntitySet="TBL_USUARIOMODULO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASS_3" Association="Self.FK_ASS_3">
+            <End Role="TBL_ESTADO" EntitySet="TBL_ESTADO" />
+            <End Role="TBL_ESTADOSOLICITUDPERMISO" EntitySet="TBL_ESTADOSOLICITUDPERMISO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASS_4" Association="Self.FK_ASS_4">
+            <End Role="TBL_SOLICITUDPERMISO" EntitySet="TBL_SOLICITUDPERMISO" />
+            <End Role="TBL_ESTADOSOLICITUDPERMISO" EntitySet="TBL_ESTADOSOLICITUDPERMISO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASS_5" Association="Self.FK_ASS_5">
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+            <End Role="TBL_PERMISOUSUARIO" EntitySet="TBL_PERMISOUSUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASS_6" Association="Self.FK_ASS_6">
+            <End Role="TBL_PERMISO" EntitySet="TBL_PERMISO" />
+            <End Role="TBL_PERMISOUSUARIO" EntitySet="TBL_PERMISOUSUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASS_7" Association="Self.FK_ASS_7">
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+            <End Role="TBL_ROLUSUARIO" EntitySet="TBL_ROLUSUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASS_8" Association="Self.FK_ASS_8">
+            <End Role="TBL_ROL" EntitySet="TBL_ROL" />
+            <End Role="TBL_ROLUSUARIO" EntitySet="TBL_ROLUSUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="GENERA" Association="Self.GENERA">
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+            <End Role="TBL_SOLICITUDPERMISO" EntitySet="TBL_SOLICITUDPERMISO" />
+          </AssociationSet>
+          <AssociationSet Name="PERTENECE" Association="Self.PERTENECE">
+            <End Role="TBL_UNIDADINTERNA" EntitySet="TBL_UNIDADINTERNA" />
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="REGISTRA" Association="Self.REGISTRA">
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+            <End Role="TBL_AUTENTIFICACION" EntitySet="TBL_AUTENTIFICACION" />
+          </AssociationSet>
+          <AssociationSet Name="TBL_USUARIO_ROL" Association="Self.TBL_USUARIO_ROL">
+            <End Role="TBL_ROL" EntitySet="TBL_ROL" />
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Modelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities_" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBL_AUTENTIFICACION" EntityType="Modelo.TBL_AUTENTIFICACION" />
+          <EntitySet Name="TBL_DIAFESTIVO" EntityType="Modelo.TBL_DIAFESTIVO" />
+          <EntitySet Name="TBL_ESTADO" EntityType="Modelo.TBL_ESTADO" />
+          <EntitySet Name="TBL_ESTADOSOLICITUDPERMISO" EntityType="Modelo.TBL_ESTADOSOLICITUDPERMISO" />
+          <EntitySet Name="TBL_MODULO" EntityType="Modelo.TBL_MODULO" />
+          <EntitySet Name="TBL_PERMISO" EntityType="Modelo.TBL_PERMISO" />
+          <EntitySet Name="TBL_PERMISOUSUARIO" EntityType="Modelo.TBL_PERMISOUSUARIO" />
+          <EntitySet Name="TBL_REG_ERRORES" EntityType="Modelo.TBL_REG_ERRORES" />
+          <EntitySet Name="TBL_REGISTROASISTENCIA" EntityType="Modelo.TBL_REGISTROASISTENCIA" />
+          <EntitySet Name="TBL_REGISTROFUNCIONARIO" EntityType="Modelo.TBL_REGISTROFUNCIONARIO" />
+          <EntitySet Name="TBL_ROL" EntityType="Modelo.TBL_ROL" />
+          <EntitySet Name="TBL_SITUACION" EntityType="Modelo.TBL_SITUACION" />
+          <EntitySet Name="TBL_SOLICITUDPERMISO" EntityType="Modelo.TBL_SOLICITUDPERMISO" />
+          <EntitySet Name="TBL_UNIDADINTERNA" EntityType="Modelo.TBL_UNIDADINTERNA" />
+          <EntitySet Name="TBL_USUARIO" EntityType="Modelo.TBL_USUARIO" />
+          <AssociationSet Name="REGISTRA" Association="Modelo.REGISTRA">
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+            <End Role="TBL_AUTENTIFICACION" EntitySet="TBL_AUTENTIFICACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASS_3" Association="Modelo.FK_ASS_3">
+            <End Role="TBL_ESTADO" EntitySet="TBL_ESTADO" />
+            <End Role="TBL_ESTADOSOLICITUDPERMISO" EntitySet="TBL_ESTADOSOLICITUDPERMISO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASS_4" Association="Modelo.FK_ASS_4">
+            <End Role="TBL_SOLICITUDPERMISO" EntitySet="TBL_SOLICITUDPERMISO" />
+            <End Role="TBL_ESTADOSOLICITUDPERMISO" EntitySet="TBL_ESTADOSOLICITUDPERMISO" />
+          </AssociationSet>
+          <AssociationSet Name="CALIFICA" Association="Modelo.CALIFICA">
+            <End Role="TBL_PERMISO" EntitySet="TBL_PERMISO" />
+            <End Role="TBL_SOLICITUDPERMISO" EntitySet="TBL_SOLICITUDPERMISO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASS_6" Association="Modelo.FK_ASS_6">
+            <End Role="TBL_PERMISO" EntitySet="TBL_PERMISO" />
+            <End Role="TBL_PERMISOUSUARIO" EntitySet="TBL_PERMISOUSUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASS_5" Association="Modelo.FK_ASS_5">
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+            <End Role="TBL_PERMISOUSUARIO" EntitySet="TBL_PERMISOUSUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASS_11" Association="Modelo.FK_ASS_11">
+            <End Role="TBL_REGISTROASISTENCIA" EntitySet="TBL_REGISTROASISTENCIA" />
+            <End Role="TBL_REGISTROFUNCIONARIO" EntitySet="TBL_REGISTROFUNCIONARIO" />
+          </AssociationSet>
+          <AssociationSet Name="TBL_USUARIO_ROL" Association="Modelo.TBL_USUARIO_ROL">
+            <End Role="TBL_ROL" EntitySet="TBL_ROL" />
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="GENERA" Association="Modelo.GENERA">
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+            <End Role="TBL_SOLICITUDPERMISO" EntitySet="TBL_SOLICITUDPERMISO" />
+          </AssociationSet>
+          <AssociationSet Name="PERTENECE" Association="Modelo.PERTENECE">
+            <End Role="TBL_UNIDADINTERNA" EntitySet="TBL_UNIDADINTERNA" />
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="TBL_ROLUSUARIO" Association="Modelo.TBL_ROLUSUARIO">
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+            <End Role="TBL_ROL" EntitySet="TBL_ROL" />
+          </AssociationSet>
+          <AssociationSet Name="TBL_USUARIOMODULO" Association="Modelo.TBL_USUARIOMODULO">
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+            <End Role="TBL_MODULO" EntitySet="TBL_MODULO" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TBL_AUTENTIFICACION">
+          <Key>
+            <PropertyRef Name="ID_AUTENTIFICACION" />
+          </Key>
+          <Property Name="ID_AUTENTIFICACION" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="FH_AUTENTIFICACION" Type="DateTime" Nullable="false" Precision="6" />
+          <Property Name="RUT_USUARIO" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="TBL_USUARIO" Relationship="Modelo.REGISTRA" FromRole="TBL_AUTENTIFICACION" ToRole="TBL_USUARIO" />
+        </EntityType>
+        <EntityType Name="TBL_DIAFESTIVO">
+          <Key>
+            <PropertyRef Name="ID_DIAFEST" />
+          </Key>
+          <Property Name="ID_DIAFEST" Type="DateTime" Nullable="false" />
+          <Property Name="DESC_DIAFEST" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBL_ESTADO">
+          <Key>
+            <PropertyRef Name="ID_ESTADO_SOL" />
+          </Key>
+          <Property Name="ID_ESTADO_SOL" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="DESC_ESTADO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBL_ESTADOSOLICITUDPERMISO" Relationship="Modelo.FK_ASS_3" FromRole="TBL_ESTADO" ToRole="TBL_ESTADOSOLICITUDPERMISO" />
+        </EntityType>
+        <EntityType Name="TBL_ESTADOSOLICITUDPERMISO">
+          <Key>
+            <PropertyRef Name="ID_ESTADO" />
+            <PropertyRef Name="ID_SOLICITUDPERMISO" />
+            <PropertyRef Name="FH_ESTADO" />
+          </Key>
+          <Property Name="ID_ESTADO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="ID_SOLICITUDPERMISO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="FH_ESTADO" Type="DateTime" Nullable="false" Precision="6" />
+          <Property Name="RESPONSABLE_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <NavigationProperty Name="TBL_ESTADO" Relationship="Modelo.FK_ASS_3" FromRole="TBL_ESTADOSOLICITUDPERMISO" ToRole="TBL_ESTADO" />
+          <NavigationProperty Name="TBL_SOLICITUDPERMISO" Relationship="Modelo.FK_ASS_4" FromRole="TBL_ESTADOSOLICITUDPERMISO" ToRole="TBL_SOLICITUDPERMISO" />
+        </EntityType>
+        <EntityType Name="TBL_MODULO">
+          <Key>
+            <PropertyRef Name="ID_MODULO" />
+          </Key>
+          <Property Name="ID_MODULO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="DESC_MODULO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBL_USUARIO" Relationship="Modelo.TBL_USUARIOMODULO" FromRole="TBL_MODULO" ToRole="TBL_USUARIO" />
+        </EntityType>
+        <EntityType Name="TBL_PERMISO">
+          <Key>
+            <PropertyRef Name="ID_PERMISO" />
+          </Key>
+          <Property Name="ID_PERMISO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="RECURSO_LEGAL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBL_SOLICITUDPERMISO" Relationship="Modelo.CALIFICA" FromRole="TBL_PERMISO" ToRole="TBL_SOLICITUDPERMISO" />
+          <NavigationProperty Name="TBL_PERMISOUSUARIO" Relationship="Modelo.FK_ASS_6" FromRole="TBL_PERMISO" ToRole="TBL_PERMISOUSUARIO" />
+        </EntityType>
+        <EntityType Name="TBL_PERMISOUSUARIO">
+          <Key>
+            <PropertyRef Name="RUT_USUARIO" />
+            <PropertyRef Name="ID_PERMISO" />
+          </Key>
+          <Property Name="RUT_USUARIO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="ID_PERMISO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="DIAS_AUTORIZADOS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="COMENTARIOS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBL_PERMISO" Relationship="Modelo.FK_ASS_6" FromRole="TBL_PERMISOUSUARIO" ToRole="TBL_PERMISO" />
+          <NavigationProperty Name="TBL_USUARIO" Relationship="Modelo.FK_ASS_5" FromRole="TBL_PERMISOUSUARIO" ToRole="TBL_USUARIO" />
+        </EntityType>
+        <EntityType Name="TBL_REG_ERRORES">
+          <Key>
+            <PropertyRef Name="NUMERO_ERROR" />
+          </Key>
+          <Property Name="NUMERO_ERROR" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRESUBPROGRAMA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NUMEROYMENSAJEDEERROR" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FECHAHORAERROR" Type="DateTime" Precision="6" />
+        </EntityType>
+        <EntityType Name="TBL_REGISTROASISTENCIA">
+          <Key>
+            <PropertyRef Name="ID_REGISTRO" />
+          </Key>
+          <Property Name="ID_REGISTRO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="FH_INGRESO" Type="DateTime" Nullable="false" Precision="6" />
+          <Property Name="FH_SALIDA" Type="DateTime" Nullable="false" Precision="6" />
+          <NavigationProperty Name="TBL_REGISTROFUNCIONARIO" Relationship="Modelo.FK_ASS_11" FromRole="TBL_REGISTROASISTENCIA" ToRole="TBL_REGISTROFUNCIONARIO" />
+        </EntityType>
+        <EntityType Name="TBL_REGISTROFUNCIONARIO">
+          <Key>
+            <PropertyRef Name="RUT_FUNCIONARIO" />
+            <PropertyRef Name="ID_REGISTRO" />
+          </Key>
+          <Property Name="RUT_FUNCIONARIO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="ID_REGISTRO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <NavigationProperty Name="TBL_REGISTROASISTENCIA" Relationship="Modelo.FK_ASS_11" FromRole="TBL_REGISTROFUNCIONARIO" ToRole="TBL_REGISTROASISTENCIA" />
+        </EntityType>
+        <EntityType Name="TBL_ROL">
+          <Key>
+            <PropertyRef Name="ID_ROL" />
+          </Key>
+          <Property Name="ID_ROL" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="NOMBRE_ROL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DESC_ROL" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBL_USUARIO" Relationship="Modelo.TBL_USUARIO_ROL" FromRole="TBL_ROL" ToRole="TBL_USUARIO" />
+          <NavigationProperty Name="TBL_USUARIO1" Relationship="Modelo.TBL_ROLUSUARIO" FromRole="TBL_ROL" ToRole="TBL_USUARIO" />
+        </EntityType>
+        <EntityType Name="TBL_SITUACION">
+          <Key>
+            <PropertyRef Name="ID_SITUACION" />
+          </Key>
+          <Property Name="ID_SITUACION" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="DESC_SITUACION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBL_SOLICITUDPERMISO">
+          <Key>
+            <PropertyRef Name="ID_SOLICITUD" />
+          </Key>
+          <Property Name="ID_SOLICITUD" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="FECHA_INICIO" Type="DateTime" Nullable="false" />
+          <Property Name="FECHA_FIN_SOL" Type="DateTime" Nullable="false" />
+          <Property Name="RUT_USUARIO" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="MOTIVO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <NavigationProperty Name="TBL_ESTADOSOLICITUDPERMISO" Relationship="Modelo.FK_ASS_4" FromRole="TBL_SOLICITUDPERMISO" ToRole="TBL_ESTADOSOLICITUDPERMISO" />
+          <NavigationProperty Name="TBL_PERMISO" Relationship="Modelo.CALIFICA" FromRole="TBL_SOLICITUDPERMISO" ToRole="TBL_PERMISO" />
+          <NavigationProperty Name="TBL_USUARIO" Relationship="Modelo.GENERA" FromRole="TBL_SOLICITUDPERMISO" ToRole="TBL_USUARIO" />
+        </EntityType>
+        <EntityType Name="TBL_UNIDADINTERNA">
+          <Key>
+            <PropertyRef Name="ID_UNIDAD_INTERNA" />
+          </Key>
+          <Property Name="ID_UNIDAD_INTERNA" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="DESC_UNIDAD_INTERNA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBL_USUARIO" Relationship="Modelo.PERTENECE" FromRole="TBL_UNIDADINTERNA" ToRole="TBL_USUARIO" />
+        </EntityType>
+        <EntityType Name="TBL_USUARIO">
+          <Key>
+            <PropertyRef Name="RUT_USUARIO" />
+          </Key>
+          <Property Name="RUT_USUARIO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="AP_PATERNO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AP_MATERNO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TEL_PARTICULAR" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="DIR_PARTICULAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TEL_INSTITUCIONAL" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ID_UNIDAD_INTERNA" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CARGO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ID_ROL" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="TBL_AUTENTIFICACION" Relationship="Modelo.REGISTRA" FromRole="TBL_USUARIO" ToRole="TBL_AUTENTIFICACION" />
+          <NavigationProperty Name="TBL_PERMISOUSUARIO" Relationship="Modelo.FK_ASS_5" FromRole="TBL_USUARIO" ToRole="TBL_PERMISOUSUARIO" />
+          <NavigationProperty Name="TBL_ROL" Relationship="Modelo.TBL_USUARIO_ROL" FromRole="TBL_USUARIO" ToRole="TBL_ROL" />
+          <NavigationProperty Name="TBL_SOLICITUDPERMISO" Relationship="Modelo.GENERA" FromRole="TBL_USUARIO" ToRole="TBL_SOLICITUDPERMISO" />
+          <NavigationProperty Name="TBL_UNIDADINTERNA" Relationship="Modelo.PERTENECE" FromRole="TBL_USUARIO" ToRole="TBL_UNIDADINTERNA" />
+          <NavigationProperty Name="TBL_ROL1" Relationship="Modelo.TBL_ROLUSUARIO" FromRole="TBL_USUARIO" ToRole="TBL_ROL" />
+          <NavigationProperty Name="TBL_MODULO" Relationship="Modelo.TBL_USUARIOMODULO" FromRole="TBL_USUARIO" ToRole="TBL_MODULO" />
+        </EntityType>
+        <Association Name="REGISTRA">
+          <End Type="Modelo.TBL_USUARIO" Role="TBL_USUARIO" Multiplicity="0..1" />
+          <End Type="Modelo.TBL_AUTENTIFICACION" Role="TBL_AUTENTIFICACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_USUARIO">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Principal>
+            <Dependent Role="TBL_AUTENTIFICACION">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASS_3">
+          <End Type="Modelo.TBL_ESTADO" Role="TBL_ESTADO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Modelo.TBL_ESTADOSOLICITUDPERMISO" Role="TBL_ESTADOSOLICITUDPERMISO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ESTADO">
+              <PropertyRef Name="ID_ESTADO_SOL" />
+            </Principal>
+            <Dependent Role="TBL_ESTADOSOLICITUDPERMISO">
+              <PropertyRef Name="ID_ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASS_4">
+          <End Type="Modelo.TBL_SOLICITUDPERMISO" Role="TBL_SOLICITUDPERMISO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Modelo.TBL_ESTADOSOLICITUDPERMISO" Role="TBL_ESTADOSOLICITUDPERMISO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_SOLICITUDPERMISO">
+              <PropertyRef Name="ID_SOLICITUD" />
+            </Principal>
+            <Dependent Role="TBL_ESTADOSOLICITUDPERMISO">
+              <PropertyRef Name="ID_ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CALIFICA">
+          <End Type="Modelo.TBL_PERMISO" Role="TBL_PERMISO" Multiplicity="1" />
+          <End Type="Modelo.TBL_SOLICITUDPERMISO" Role="TBL_SOLICITUDPERMISO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PERMISO">
+              <PropertyRef Name="ID_PERMISO" />
+            </Principal>
+            <Dependent Role="TBL_SOLICITUDPERMISO">
+              <PropertyRef Name="MOTIVO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASS_6">
+          <End Type="Modelo.TBL_PERMISO" Role="TBL_PERMISO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Modelo.TBL_PERMISOUSUARIO" Role="TBL_PERMISOUSUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PERMISO">
+              <PropertyRef Name="ID_PERMISO" />
+            </Principal>
+            <Dependent Role="TBL_PERMISOUSUARIO">
+              <PropertyRef Name="ID_PERMISO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASS_5">
+          <End Type="Modelo.TBL_USUARIO" Role="TBL_USUARIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Modelo.TBL_PERMISOUSUARIO" Role="TBL_PERMISOUSUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_USUARIO">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Principal>
+            <Dependent Role="TBL_PERMISOUSUARIO">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASS_11">
+          <End Type="Modelo.TBL_REGISTROASISTENCIA" Role="TBL_REGISTROASISTENCIA" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Modelo.TBL_REGISTROFUNCIONARIO" Role="TBL_REGISTROFUNCIONARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_REGISTROASISTENCIA">
+              <PropertyRef Name="ID_REGISTRO" />
+            </Principal>
+            <Dependent Role="TBL_REGISTROFUNCIONARIO">
+              <PropertyRef Name="ID_REGISTRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TBL_USUARIO_ROL">
+          <End Type="Modelo.TBL_ROL" Role="TBL_ROL" Multiplicity="0..1" />
+          <End Type="Modelo.TBL_USUARIO" Role="TBL_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ROL">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="TBL_USUARIO">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GENERA">
+          <End Type="Modelo.TBL_USUARIO" Role="TBL_USUARIO" Multiplicity="0..1" />
+          <End Type="Modelo.TBL_SOLICITUDPERMISO" Role="TBL_SOLICITUDPERMISO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_USUARIO">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Principal>
+            <Dependent Role="TBL_SOLICITUDPERMISO">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PERTENECE">
+          <End Type="Modelo.TBL_UNIDADINTERNA" Role="TBL_UNIDADINTERNA" Multiplicity="1" />
+          <End Type="Modelo.TBL_USUARIO" Role="TBL_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_UNIDADINTERNA">
+              <PropertyRef Name="ID_UNIDAD_INTERNA" />
+            </Principal>
+            <Dependent Role="TBL_USUARIO">
+              <PropertyRef Name="ID_UNIDAD_INTERNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TBL_ROLUSUARIO">
+          <End Type="Modelo.TBL_USUARIO" Role="TBL_USUARIO" Multiplicity="*" />
+          <End Type="Modelo.TBL_ROL" Role="TBL_ROL" Multiplicity="*" />
+        </Association>
+        <Association Name="TBL_USUARIOMODULO">
+          <End Type="Modelo.TBL_USUARIO" Role="TBL_USUARIO" Multiplicity="*" />
+          <End Type="Modelo.TBL_MODULO" Role="TBL_MODULO" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModeloStoreContainer" CdmEntityContainer="Entities_">
+          <EntitySetMapping Name="TBL_AUTENTIFICACION">
+            <EntityTypeMapping TypeName="Modelo.TBL_AUTENTIFICACION">
+              <MappingFragment StoreEntitySet="TBL_AUTENTIFICACION">
+                <ScalarProperty Name="RUT_USUARIO" ColumnName="RUT_USUARIO" />
+                <ScalarProperty Name="FH_AUTENTIFICACION" ColumnName="FH_AUTENTIFICACION" />
+                <ScalarProperty Name="ID_AUTENTIFICACION" ColumnName="ID_AUTENTIFICACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_DIAFESTIVO">
+            <EntityTypeMapping TypeName="Modelo.TBL_DIAFESTIVO">
+              <MappingFragment StoreEntitySet="TBL_DIAFESTIVO">
+                <ScalarProperty Name="DESC_DIAFEST" ColumnName="DESC_DIAFEST" />
+                <ScalarProperty Name="ID_DIAFEST" ColumnName="ID_DIAFEST" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_ESTADO">
+            <EntityTypeMapping TypeName="Modelo.TBL_ESTADO">
+              <MappingFragment StoreEntitySet="TBL_ESTADO">
+                <ScalarProperty Name="DESC_ESTADO" ColumnName="DESC_ESTADO" />
+                <ScalarProperty Name="ID_ESTADO_SOL" ColumnName="ID_ESTADO_SOL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_ESTADOSOLICITUDPERMISO">
+            <EntityTypeMapping TypeName="Modelo.TBL_ESTADOSOLICITUDPERMISO">
+              <MappingFragment StoreEntitySet="TBL_ESTADOSOLICITUDPERMISO">
+                <ScalarProperty Name="RESPONSABLE_ID" ColumnName="RESPONSABLE_ID" />
+                <ScalarProperty Name="FH_ESTADO" ColumnName="FH_ESTADO" />
+                <ScalarProperty Name="ID_SOLICITUDPERMISO" ColumnName="ID_SOLICITUDPERMISO" />
+                <ScalarProperty Name="ID_ESTADO" ColumnName="ID_ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_MODULO">
+            <EntityTypeMapping TypeName="Modelo.TBL_MODULO">
+              <MappingFragment StoreEntitySet="TBL_MODULO">
+                <ScalarProperty Name="DESC_MODULO" ColumnName="DESC_MODULO" />
+                <ScalarProperty Name="ID_MODULO" ColumnName="ID_MODULO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_PERMISO">
+            <EntityTypeMapping TypeName="Modelo.TBL_PERMISO">
+              <MappingFragment StoreEntitySet="TBL_PERMISO">
+                <ScalarProperty Name="RECURSO_LEGAL" ColumnName="RECURSO_LEGAL" />
+                <ScalarProperty Name="ID_PERMISO" ColumnName="ID_PERMISO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_PERMISOUSUARIO">
+            <EntityTypeMapping TypeName="Modelo.TBL_PERMISOUSUARIO">
+              <MappingFragment StoreEntitySet="TBL_PERMISOUSUARIO">
+                <ScalarProperty Name="COMENTARIOS" ColumnName="COMENTARIOS" />
+                <ScalarProperty Name="DIAS_AUTORIZADOS" ColumnName="DIAS_AUTORIZADOS" />
+                <ScalarProperty Name="ID_PERMISO" ColumnName="ID_PERMISO" />
+                <ScalarProperty Name="RUT_USUARIO" ColumnName="RUT_USUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_REG_ERRORES">
+            <EntityTypeMapping TypeName="Modelo.TBL_REG_ERRORES">
+              <MappingFragment StoreEntitySet="TBL_REG_ERRORES">
+                <ScalarProperty Name="FECHAHORAERROR" ColumnName="FECHAHORAERROR" />
+                <ScalarProperty Name="NUMEROYMENSAJEDEERROR" ColumnName="NUMEROYMENSAJEDEERROR" />
+                <ScalarProperty Name="NOMBRESUBPROGRAMA" ColumnName="NOMBRESUBPROGRAMA" />
+                <ScalarProperty Name="NUMERO_ERROR" ColumnName="NUMERO_ERROR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_REGISTROASISTENCIA">
+            <EntityTypeMapping TypeName="Modelo.TBL_REGISTROASISTENCIA">
+              <MappingFragment StoreEntitySet="TBL_REGISTROASISTENCIA">
+                <ScalarProperty Name="FH_SALIDA" ColumnName="FH_SALIDA" />
+                <ScalarProperty Name="FH_INGRESO" ColumnName="FH_INGRESO" />
+                <ScalarProperty Name="ID_REGISTRO" ColumnName="ID_REGISTRO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_REGISTROFUNCIONARIO">
+            <EntityTypeMapping TypeName="Modelo.TBL_REGISTROFUNCIONARIO">
+              <MappingFragment StoreEntitySet="TBL_REGISTROFUNCIONARIO">
+                <ScalarProperty Name="ID_REGISTRO" ColumnName="ID_REGISTRO" />
+                <ScalarProperty Name="RUT_FUNCIONARIO" ColumnName="RUT_FUNCIONARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_ROL">
+            <EntityTypeMapping TypeName="Modelo.TBL_ROL">
+              <MappingFragment StoreEntitySet="TBL_ROL">
+                <ScalarProperty Name="DESC_ROL" ColumnName="DESC_ROL" />
+                <ScalarProperty Name="NOMBRE_ROL" ColumnName="NOMBRE_ROL" />
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_SITUACION">
+            <EntityTypeMapping TypeName="Modelo.TBL_SITUACION">
+              <MappingFragment StoreEntitySet="TBL_SITUACION">
+                <ScalarProperty Name="DESC_SITUACION" ColumnName="DESC_SITUACION" />
+                <ScalarProperty Name="ID_SITUACION" ColumnName="ID_SITUACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_SOLICITUDPERMISO">
+            <EntityTypeMapping TypeName="Modelo.TBL_SOLICITUDPERMISO">
+              <MappingFragment StoreEntitySet="TBL_SOLICITUDPERMISO">
+                <ScalarProperty Name="MOTIVO" ColumnName="MOTIVO" />
+                <ScalarProperty Name="RUT_USUARIO" ColumnName="RUT_USUARIO" />
+                <ScalarProperty Name="FECHA_FIN_SOL" ColumnName="FECHA_FIN_SOL" />
+                <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+                <ScalarProperty Name="ID_SOLICITUD" ColumnName="ID_SOLICITUD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_UNIDADINTERNA">
+            <EntityTypeMapping TypeName="Modelo.TBL_UNIDADINTERNA">
+              <MappingFragment StoreEntitySet="TBL_UNIDADINTERNA">
+                <ScalarProperty Name="DESC_UNIDAD_INTERNA" ColumnName="DESC_UNIDAD_INTERNA" />
+                <ScalarProperty Name="ID_UNIDAD_INTERNA" ColumnName="ID_UNIDAD_INTERNA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_USUARIO">
+            <EntityTypeMapping TypeName="Modelo.TBL_USUARIO">
+              <MappingFragment StoreEntitySet="TBL_USUARIO">
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="CARGO" ColumnName="CARGO" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="ID_UNIDAD_INTERNA" ColumnName="ID_UNIDAD_INTERNA" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="TEL_INSTITUCIONAL" ColumnName="TEL_INSTITUCIONAL" />
+                <ScalarProperty Name="DIR_PARTICULAR" ColumnName="DIR_PARTICULAR" />
+                <ScalarProperty Name="TEL_PARTICULAR" ColumnName="TEL_PARTICULAR" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="AP_MATERNO" ColumnName="AP_MATERNO" />
+                <ScalarProperty Name="AP_PATERNO" ColumnName="AP_PATERNO" />
+                <ScalarProperty Name="RUT_USUARIO" ColumnName="RUT_USUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="TBL_ROLUSUARIO" TypeName="Modelo.TBL_ROLUSUARIO" StoreEntitySet="TBL_ROLUSUARIO">
+            <EndProperty Name="TBL_ROL">
+              <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+            </EndProperty>
+            <EndProperty Name="TBL_USUARIO">
+              <ScalarProperty Name="RUT_USUARIO" ColumnName="RUT_USUARIO" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="TBL_USUARIOMODULO" TypeName="Modelo.TBL_USUARIOMODULO" StoreEntitySet="TBL_USUARIOMODULO">
+            <EndProperty Name="TBL_MODULO">
+              <ScalarProperty Name="ID_MODULO" ColumnName="ID_MODULO" />
+            </EndProperty>
+            <EndProperty Name="TBL_USUARIO">
+              <ScalarProperty Name="RUT_USUARIO" ColumnName="RUT_USUARIO" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

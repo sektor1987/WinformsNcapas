@@ -1,0 +1,48 @@
+[29/11/2017 1:13:21][123][Usuario Logueado]
+
+[29/11/2017 1:14:18][123][Usuario Logueado]
+
+[29/11/2017 1:14:45][123][Permiso Generado]
+
+[29/11/2017 1:15:15][123][Usuario Logueado]
+
+[29/11/2017 1:16:19][123][Usuario Logueado]
+
+[29/11/2017 1:32:38][123][Usuario Logueado]
+
+[29/11/2017 2:12:11][123][Usuario Logueado]
+
+[29/11/2017 2:16:58][123][Usuario Logueado]
+
+[29/11/2017 2:18:31][123][Usuario Logueado]
+
+[29/11/2017 19:04:07][123][Usuario Logueado]
+
+[29/11/2017 19:04:30][123][Usuario Logueado]
+
+[29/11/2017 19:10:15][888][Usuario Logueado]
+
+[29/11/2017 19:10:43][888][Usuario Logueado]
+
+[29/11/2017 19:11:32][555][Usuario Logueado]
+
+[29/11/2017 19:12:58][555][Usuario Logueado]
+
+[29/11/2017 19:13:39][555][Usuario Logueado]
+
+[29/11/2017 19:13:56][888][Usuario Logueado]
+
+[29/11/2017 19:14:29][888][Permiso Generado]
+
+[29/11/2017 19:17:47][1234][Usuario Logueado]
+
+[29/11/2017 19:22:08][1234][Permiso Generado]
+
+[29/11/2017 19:32:46][1234][Usuario Logueado]
+
+[29/11/2017 19:33:46][1234][Usuario Logueado]
+
+[29/11/2017 19:35:06][888][Usuario Logueado]
+
+[29/11/2017 19:36:28][888][Permiso Generado]
+

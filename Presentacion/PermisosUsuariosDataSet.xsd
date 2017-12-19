@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PermisosUsuariosDataSet" targetNamespace="http://tempuri.org/PermisosUsuariosDataSet.xsd" xmlns:mstns="http://tempuri.org/PermisosUsuariosDataSet.xsd" xmlns="http://tempuri.org/PermisosUsuariosDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ConnectionStringUnidadInterna" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionStringUnidadInterna (Settings)" ParameterPrefix=":" PropertyReference="ApplicationSettings.Presentacion.Properties.Settings.GlobalReference.Default.ConnectionStringUnidadInterna" Provider="Oracle.ManagedDataAccess.Client" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VW_CANTIDAD_PERMISOS_USUARIOSTableAdapter" GeneratorDataComponentClassName="VW_CANTIDAD_PERMISOS_USUARIOSTableAdapter" Name="VW_CANTIDAD_PERMISOS_USUARIOS" UserDataComponentName="VW_CANTIDAD_PERMISOS_USUARIOSTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionStringUnidadInterna (Settings)" DbObjectName="VSSTUDIOUSER.VW_CANTIDAD_PERMISOS_USUARIOS" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT RUT_USUARIO, NOMBRE_USUARIO, RECURSO_LEGAL, DIAS_AUTORIZADOS, COMENTARIOS FROM VSSTUDIOUSER.VW_CANTIDAD_PERMISOS_USUARIOS</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="RUT_USUARIO" DataSetColumn="RUT_USUARIO" />
+              <Mapping SourceColumn="NOMBRE_USUARIO" DataSetColumn="NOMBRE_USUARIO" />
+              <Mapping SourceColumn="RECURSO_LEGAL" DataSetColumn="RECURSO_LEGAL" />
+              <Mapping SourceColumn="DIAS_AUTORIZADOS" DataSetColumn="DIAS_AUTORIZADOS" />
+              <Mapping SourceColumn="COMENTARIOS" DataSetColumn="COMENTARIOS" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="PermisosUsuariosDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="PermisosUsuariosDataSet" msprop:Generator_UserDSName="PermisosUsuariosDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="VW_CANTIDAD_PERMISOS_USUARIOS" msprop:Generator_TableClassName="VW_CANTIDAD_PERMISOS_USUARIOSDataTable" msprop:Generator_TableVarName="tableVW_CANTIDAD_PERMISOS_USUARIOS" msprop:Generator_TablePropName="VW_CANTIDAD_PERMISOS_USUARIOS" msprop:Generator_RowDeletingName="VW_CANTIDAD_PERMISOS_USUARIOSRowDeleting" msprop:Generator_RowChangingName="VW_CANTIDAD_PERMISOS_USUARIOSRowChanging" msprop:Generator_RowEvHandlerName="VW_CANTIDAD_PERMISOS_USUARIOSRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_CANTIDAD_PERMISOS_USUARIOSRowDeleted" msprop:Generator_UserTableName="VW_CANTIDAD_PERMISOS_USUARIOS" msprop:Generator_RowChangedName="VW_CANTIDAD_PERMISOS_USUARIOSRowChanged" msprop:Generator_RowEvArgName="VW_CANTIDAD_PERMISOS_USUARIOSRowChangeEvent" msprop:Generator_RowClassName="VW_CANTIDAD_PERMISOS_USUARIOSRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RUT_USUARIO" msprop:Generator_ColumnVarNameInTable="columnRUT_USUARIO" msprop:Generator_ColumnPropNameInRow="RUT_USUARIO" msprop:Generator_ColumnPropNameInTable="RUT_USUARIOColumn" msprop:Generator_UserColumnName="RUT_USUARIO" type="xs:decimal" />
+              <xs:element name="NOMBRE_USUARIO" msprop:Generator_ColumnVarNameInTable="columnNOMBRE_USUARIO" msprop:Generator_ColumnPropNameInRow="NOMBRE_USUARIO" msprop:Generator_ColumnPropNameInTable="NOMBRE_USUARIOColumn" msprop:Generator_UserColumnName="NOMBRE_USUARIO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="152" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RECURSO_LEGAL" msprop:Generator_ColumnVarNameInTable="columnRECURSO_LEGAL" msprop:Generator_ColumnPropNameInRow="RECURSO_LEGAL" msprop:Generator_ColumnPropNameInTable="RECURSO_LEGALColumn" msprop:Generator_UserColumnName="RECURSO_LEGAL" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DIAS_AUTORIZADOS" msprop:Generator_ColumnVarNameInTable="columnDIAS_AUTORIZADOS" msprop:Generator_ColumnPropNameInRow="DIAS_AUTORIZADOS" msprop:Generator_ColumnPropNameInTable="DIAS_AUTORIZADOSColumn" msprop:Generator_UserColumnName="DIAS_AUTORIZADOS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="COMENTARIOS" msprop:Generator_ColumnVarNameInTable="columnCOMENTARIOS" msprop:Generator_ColumnPropNameInRow="COMENTARIOS" msprop:Generator_ColumnPropNameInTable="COMENTARIOSColumn" msprop:Generator_UserColumnName="COMENTARIOS" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://wsLocal/" targetNamespace="http://wsLocal/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Autenticate" type="tns:Autenticate" />
+  <xs:element name="AutenticateResponse" type="tns:AutenticateResponse" />
+  <xs:element name="getAllByRut" type="tns:getAllByRut" />
+  <xs:element name="getAllByRutResponse" type="tns:getAllByRutResponse" />
+  <xs:element name="getAntiguedadFun" type="tns:getAntiguedadFun" />
+  <xs:element name="getAntiguedadFunResponse" type="tns:getAntiguedadFunResponse" />
+  <xs:element name="getResolucionAll" type="tns:getResolucionAll" />
+  <xs:element name="getResolucionAllMesAnterior" type="tns:getResolucionAllMesAnterior" />
+  <xs:element name="getResolucionAllMesAnteriorResponse" type="tns:getResolucionAllMesAnteriorResponse" />
+  <xs:element name="getResolucionAllResponse" type="tns:getResolucionAllResponse" />
+  <xs:element name="getSituacionEmpleado" type="tns:getSituacionEmpleado" />
+  <xs:element name="getSituacionEmpleadoResponse" type="tns:getSituacionEmpleadoResponse" />
+  <xs:element name="lstCantidadPermisoEstado" type="tns:lstCantidadPermisoEstado" />
+  <xs:element name="lstCantidadPermisoEstadoResponse" type="tns:lstCantidadPermisoEstadoResponse" />
+  <xs:element name="lstCantidadPermisoEstadoUnidad" type="tns:lstCantidadPermisoEstadoUnidad" />
+  <xs:element name="lstCantidadPermisoEstadoUnidadResponse" type="tns:lstCantidadPermisoEstadoUnidadResponse" />
+  <xs:element name="validateDoc" type="tns:validateDoc" />
+  <xs:element name="validateDocResponse" type="tns:validateDocResponse" />
+  <xs:complexType name="getResolucionAll">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getResolucionAllResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:permisoUsuario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="permisoUsuario">
+    <xs:sequence>
+      <xs:element name="diasAut" type="xs:int" />
+      <xs:element minOccurs="0" name="estado" type="xs:string" />
+      <xs:element minOccurs="0" name="recursoLegal" type="xs:string" />
+      <xs:element name="rut" type="xs:int" />
+      <xs:element name="solicitud" type="xs:int" />
+      <xs:element minOccurs="0" name="unidadInterna" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Autenticate">
+    <xs:sequence>
+      <xs:element name="rut" type="xs:int" />
+      <xs:element minOccurs="0" name="password" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AutenticateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validateDoc">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="num" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validateDocResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllByRut">
+    <xs:sequence>
+      <xs:element name="rut" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllByRutResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:permisoUsuario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSituacionEmpleado">
+    <xs:sequence>
+      <xs:element name="rut" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSituacionEmpleadoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAntiguedadFun">
+    <xs:sequence>
+      <xs:element name="rutFun" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAntiguedadFunResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="lstCantidadPermisoEstadoUnidad">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="unidadInterna" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="lstCantidadPermisoEstadoUnidadResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:resumenCantidadPerEstado" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resumenCantidadPerEstado">
+    <xs:sequence>
+      <xs:element name="cantidad" type="xs:int" />
+      <xs:element minOccurs="0" name="recursoLegal" type="xs:string" />
+      <xs:element minOccurs="0" name="unidadInterna" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getResolucionAllMesAnterior">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getResolucionAllMesAnteriorResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:permisoUsuario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="lstCantidadPermisoEstado">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="lstCantidadPermisoEstadoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:resumenCantidadPerEstado" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
